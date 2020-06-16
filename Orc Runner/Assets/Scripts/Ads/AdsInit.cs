@@ -6,7 +6,7 @@ using UnityEngine.Advertisements;
 public class AdsInit : MonoBehaviour
 {
     private string gameId = "3604609";  // id for Google Play
-    private bool testMode = true;
+    private bool testMode = false;
 
     void Start()
     {
@@ -25,5 +25,17 @@ public class AdsInit : MonoBehaviour
 
         Advertisement.Banner.SetPosition(BannerPosition.BOTTOM_CENTER);
         Advertisement.Banner.Show("Banner");
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        if(level == 0)
+        {
+            Advertisement.Initialize(gameId, testMode);
+            StartCoroutine(ShowBannerWhenReady());
+        }
+
+        if (level == 1)
+            Advertisement.Banner.Hide();
     }
 }

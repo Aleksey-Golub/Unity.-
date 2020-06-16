@@ -14,8 +14,6 @@ public class EnemySpawner : ObjectPool
     private List<int> _purchasedEnemyIndexes;   // массив индексов купленных врагов
     private float _elapsedTime = 0;     // время с последнего спавна
 
-    private List<int> q;
-
     private void Start()
     {
         _isBoughtPurchasedEnemies.AddRange(GameManager.Instance.IsBoughtEnemies);
@@ -44,7 +42,7 @@ public class EnemySpawner : ObjectPool
         {
             int indexPoolForSpawn = 0;
 
-            if (_isBoughtPurchasedEnemies.Contains(true) && (Random.Range(0, 101) <= 10))
+            if (_isBoughtPurchasedEnemies.Contains(true) && (Random.Range(0, 101) <= _purchasedEnemySpawnChance))
                     indexPoolForSpawn = 1 + GetRandomInt(_purchasedEnemyIndexes);
 
             if (TryGetObject(out GameObject enemy, JuggedPool[indexPoolForSpawn]))

@@ -9,9 +9,9 @@ public class AdsForGold : MonoBehaviour, IUnityAdsListener
 {
     private string _gameId = "3604609";  // id for Google Play
     private string _myPlacementId = "rewardedVideo";
-    private bool _testMode = true;
+    private bool _testMode = false;
 
-    private int _coinsForAds = 10;
+    private int _coinsForAds = 50;
     private bool _adsIsReady = false;
 
     public event UnityAction<int> AdsFinished;

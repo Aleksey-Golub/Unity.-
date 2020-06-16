@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
     private Player _player;
     private float _savedTimeScale;
 
+    private int _accelerationMultiplier = 2;
+    private float _accelerationDuration = 4f;
+
 #if UNITY_EDITOR
     private bool isPaused = false;
 #endif
@@ -80,10 +83,10 @@ public class PlayerController : MonoBehaviour
     private IEnumerator RunCoroutine()
     {
         _savedTimeScale = Time.timeScale;
-        Time.timeScale *= 2;
+        Time.timeScale *= _accelerationMultiplier;
         _runButton.interactable = false;
 
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(_accelerationDuration * _accelerationMultiplier);
 
         _savedTimeScale = GameManager.Instance.SavedTimeScale > _savedTimeScale ? GameManager.Instance.SavedTimeScale : _savedTimeScale;
         _runButton.interactable = true;

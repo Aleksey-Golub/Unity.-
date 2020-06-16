@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private int _coins = 10;
+    private int _coins;
 
     [HideInInspector] public float SavedTimeScale;
     /// <summary>
